@@ -48,12 +48,12 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login('smartrahulmishra1999@gmail.com','9919095214Rahul@')
-    server.sendmail('smartrahulmishra1999@gmail.com', to, content)
+    server.login('email.id','password')
+    server.sendmail('email.id', to, content)
     server.close()
 def get_trending_movies():
     trending_movies = []
-    res = requests.get(f"https://api.themoviedb.org/3/trending/movie/day?api_key=2beb9587e05e0fbbee2af1bf375fbbaa").json()
+    res = requests.get(f"https://api.themoviedb.org/3/trending/movie/day?api_key=api key").json()
     results = res["results"]
     for r in results:
         trending_movies.append(r["original_title"])
@@ -62,7 +62,7 @@ def get_trending_movies():
 
 def get_latest_news():
     news_headlines = []
-    res = requests.get(f"https://newsapi.org/v2/top-headlines?country=in&apiKey=117b1efc36ea4319839631e83c90d06c&category=general").json()
+    res = requests.get(f"https://newsapi.org/v2/top-headlines?country=in&apiKey=apikey").json()
     articles = res["articles"]
     for article in articles:
         news_headlines.append(article["title"])
@@ -83,7 +83,7 @@ def find_my_ip():
     ip_address = requests.get('https://api64.ipify.org?format=json').json()
     return ip_address["ip"]
 def get_weather_report(city):
-    res = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid=648f40aa45d29b58ba3827f22b035b77&units=metric").json()
+    res = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid=apikey&units=metric").json()
     weather = res["weather"][0]["main"]
     temperature = res["main"]["temp"]
     feels_like = res["main"]["feels_like"]
